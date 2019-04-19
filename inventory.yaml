@@ -1,6 +1,19 @@
 ---
 groups:
+  - name: raspberrybootstrap
+    features: ['puppet-agent']
+    config:
+      transport: ssh
+      ssh:
+        user: pi
+        password: raspberry
+        host-key-check: false
+        connect-timeout: 120
+        run-as: root
+        interpreters:
+          rb: /usr/bin/ruby
   - name: raspberry
+    features: ['puppet-agent']
     nodes:
       - name: marco.ztier.sneezingdog.lan
         alias: marco
@@ -14,8 +27,6 @@ groups:
         alias: polo
         facts: 
           datacenter: "belfast"
-    features: 
-      - 'puppet-agent' 
     config:
       transport: ssh 
       ssh:
