@@ -1,0 +1,14 @@
+---
+version: 5
+defaults:
+  datadir: data
+  data_hash: yaml_data
+hierarchy:
+  - name: "hostname"
+    path: "hostname/%{facts.hostname}.yaml"
+
+  - name: "datacenter"
+    path: "datacenter/%{facts.datacenter}.yaml"
+
+  - name: "common"
+    path: "common.yaml"

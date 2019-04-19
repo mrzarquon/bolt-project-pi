@@ -1,0 +1,28 @@
+---
+groups:
+  - name: raspberry
+    nodes:
+      - name: marco.ztier.sneezingdog.lan
+        alias: marco
+        facts: 
+          datacenter: "portland"
+      - name: dalton.ztier.sneezingdog.lan
+        alias: dalton
+        facts: 
+          datacenter: "portland"
+      - name: polo.ztier.sneezingdog.lan
+        alias: polo
+        facts: 
+          datacenter: "belfast"
+    features: 
+      - 'puppet-agent' 
+    config:
+      transport: ssh 
+      ssh:
+        user: pi
+        private-key: ~/.ssh/id_angrydome_ed25519
+        host-key-check: false
+        connect-timeout: 120
+        run-as: root
+        interpreters:
+          rb: /usr/bin/ruby
