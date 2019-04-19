@@ -34,7 +34,7 @@ ssh:
     rb: /usr/bin/ruby
 ```
 
-Lastly, you will need Puppet installed in the ruby at that path somehow, see the gem_puppet task for a simple (and not exactly best way) to get Puppet on the system.
+Lastly, you will need Puppet installed in the ruby at that path somehow, see the `pi::gem_puppet` task for a simple (and not exactly best way) to get Puppet on the system.
 
 Bootstrap vs ongoing
 -----------
