@@ -8,27 +8,36 @@ This is an example bolt project directory for working with Raspberry Pi's.
 
 This requires to get Bolt apply working (and on any other system without a native puppet-agent package):
 
-Mark your raspberry pi's as having the puppet-agent feature in the inventory file, this skips the puppet agent installation and version check part of apply_prep:
+Mark your raspberry pi's as having the puppet-agent feature in the inventory file, this skips the puppet agent installation and version check part of apply_prep (features are node/group level attributes):
 
 ```
-features:
-  - 'puppet-agent'
+groups:
+  - name: raspberrybootstrap
+    features:
+      - 'puppet-agent'
 ```
 
 or
 
 ```
-features: ['puppet-agent']
+groups:
+  - name: raspberrybootstrap
+    features: ['puppet-agent']
 ```
 
 Are both valid.
 
-And under the transport configuration settings, you need to specify which ruby to use, as Bolt apply will default to /opt/puppetlabs/puppet/bin/ruby (which is what puppet-agent would use). I do this in the inventory group as well, since I only want to use this for the systems I know I don't have puppet-agent package installed.
+And under the transport configuration settings, you need to specify which ruby to use, as Bolt apply will default to /opt/puppetlabs/puppet/bin/ruby (which is what puppet-agent would use). I do this in the inventory group as well, since I only want to use this for the systems I know I don't have puppet-agent package installed (interpreters are set on the transport configuration area).
 
 ```
-ssh:
-  interpreters:
-    rb: /usr/bin/ruby
+config:
+  transport: ssh
+  ssh:
+    user: pi
+    password: raspberry
+    run-as: root
+    interpreters:
+      rb: /usr/bin/ruby
 ```
 
 See the included inventory.yaml for a inventory group with that feature enabled.
