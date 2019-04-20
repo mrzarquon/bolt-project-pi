@@ -27,7 +27,7 @@ groups:
 
 Are both valid.
 
-And under the transport configuration settings, you need to specify which ruby to use, as Bolt apply will default to /opt/puppetlabs/puppet/bin/ruby (which is what puppet-agent would use). I do this in the inventory group as well, since I only want to use this for the systems I know I don't have puppet-agent package installed (interpreters are set on the transport configuration area).
+And under the transport configuration settings, you need to specify which ruby to use, as Bolt apply will default to /opt/puppetlabs/puppet/bin/ruby (which is what puppet-agent would use). I do this in the inventory group as well, since I only want to use this for the systems I know I don't have puppet-agent package installed.
 
 ```
 config:
